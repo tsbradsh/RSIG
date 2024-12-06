@@ -11,7 +11,7 @@ app.get('/api/instagram', async (req, res) => {
     try {
         const IGACT = process.env.IGACT
         if (!IGACT) throw new Error("Access token error");
-        const instagramApiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_url&access_token=${IGACT}`
+        const instagramApiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&access_token=${IGACT}`
         const response = await axios.get(instagramApiUrl);
         res.json(response.data);
     } catch (error) {
